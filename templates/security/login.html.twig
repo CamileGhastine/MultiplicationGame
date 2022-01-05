@@ -8,6 +8,12 @@
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
+   	{% for message in app.flashes('login') %}
+		<div class="alert alert-danger text-center">
+			{{ message }}
+		</div>
+	{% endfor %}
+
     {% if app.user %}
         <div class="mb-3">
             Vous êtes connecté en tant que {{ app.user.pseudo }}, <a href="{{ path('app_logout') }}">Déconnexion</a>

@@ -25,6 +25,12 @@ class GameController extends AbstractController
     #[Route('/game', name: 'game')]
     public function play(GameRepository $repo, Request $request, RequestStack $requestStack, MultiplicationGenerator $multiplicationGenerator, GameCorrector $gameCorrector): Response
     {
+        if(!$this->getUser()) {
+            $this->addFlash('login', 'Merci de vous connecter pour jouer !');
+
+            return $this->redirectToRoute('app_login');
+        }
+
         $game = $multiplicationGenerator->generate(1);
        
         $form = $this->createForm(GameType::class, $game);
