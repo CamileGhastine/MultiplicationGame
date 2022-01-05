@@ -40,7 +40,7 @@ class GameController extends AbstractController
             $game->setTimeEnd(time());
             $game = $gameCorrector->correct($game, $requestStack->getSession()->get('gamePersist'), $this->getUser());
 
-            return $this->redirectToRoute('result');
+            return $this->redirectToRoute('result', ['score' => $game->getScore()]);
         }
         
         $game->setTimeStart(time());
@@ -55,11 +55,14 @@ class GameController extends AbstractController
     }
 
     #[Route('/result', name: 'result')]
-    public function result(UserRepository $userRepository, GameRepository $gameRepository): Response
+    public function result(UserRepository $userRepository, GameRepository $gameRepository, Request $request): Response
     {
         $userGames = $this->getUser() 
             ? $gameRepository->findBy(['user' => $this->getUser()->getId()], ['score' => 'asc'], 10)
             : null;
+        
+        if($request->query->get('score'))
+            $this->addFlash('result', 'Votre score est de ' . $request->query->get('score'));
 
         return $this->render('game/result.html.twig', [
             'games' => $gameRepository->findBy([], ['score' => 'asc'], 10),
