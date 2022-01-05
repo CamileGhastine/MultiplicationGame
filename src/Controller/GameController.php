@@ -9,6 +9,7 @@ use App\Service\MultiplicationGenerator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GameController extends AbstractController
@@ -20,20 +21,27 @@ class GameController extends AbstractController
     }
 
     #[Route('/game', name: 'game')]
-    public function play(Request $request, MultiplicationGenerator $multiplicationGenerator, GameCorrector $gameCorrector): Response
+    public function play(Request $request, RequestStack $requestStack, MultiplicationGenerator $multiplicationGenerator, GameCorrector $gameCorrector): Response
     {
         $game = $multiplicationGenerator->generate(1);
-        
+       
         $form = $this->createForm(GameType::class, $game);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
-            dd($request->request, $game);
+            $game->setTimeEnd(time());
+            $game = $gameCorrector->correct($game, $requestStack->getSession()->get('gamePersist'));
+            dd($game);
         }
+        
+        $game->setTimeStart(time());
+        $session = $requestStack->getSession();
+        $session->set('gamePersist', $game);
 
         return $this->render('game/game.html.twig', [
             'form' => $form->createView(),
-            'game' =>$game
+            'game' => $game,
+            'serializeGame' =>serialize($game)
         ]);
     }
 }

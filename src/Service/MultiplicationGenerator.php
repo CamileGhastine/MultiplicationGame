@@ -14,7 +14,7 @@ class MultiplicationGenerator
         if ($level === 3) $number2 = 100;
 
         $game = new Game;
-        
+
         for($i=1; $i<=10; $i++) {
             $setQuestion = 'setQuestion'.$i;
             $game->$setQuestion([rand(0,$number1), rand(0,$number2) ]);
