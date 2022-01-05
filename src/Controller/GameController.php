@@ -31,7 +31,7 @@ class GameController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        $game = $multiplicationGenerator->generate(1);
+        $game = $multiplicationGenerator->generate($request->query->get('level'));
        
         $form = $this->createForm(GameType::class, $game);
         $form->handleRequest($request);
