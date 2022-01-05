@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Game;
 use App\Form\GameType;
+use App\Repository\GameRepository;
 use App\Service\GameCorrector;
 use App\Service\MultiplicationGenerator;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,17 +22,18 @@ class GameController extends AbstractController
     }
 
     #[Route('/game', name: 'game')]
-    public function play(Request $request, RequestStack $requestStack, MultiplicationGenerator $multiplicationGenerator, GameCorrector $gameCorrector): Response
+    public function play(GameRepository $repo, Request $request, RequestStack $requestStack, MultiplicationGenerator $multiplicationGenerator, GameCorrector $gameCorrector): Response
     {
         $game = $multiplicationGenerator->generate(1);
        
         $form = $this->createForm(GameType::class, $game);
         $form->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             $game->setTimeEnd(time());
             $game = $gameCorrector->correct($game, $requestStack->getSession()->get('gamePersist'));
-            dd($game);
+
+            dd($repo->findall());
         }
         
         $game->setTimeStart(time());

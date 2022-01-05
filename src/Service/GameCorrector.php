@@ -2,10 +2,18 @@
 
 namespace App\Service;
 
+use Doctrine\ORM\EntityManagerInterface;
+
 Use App\Entity\Game;
 
 class GameCorrector 
 {
+    private $em;
+    
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
     public function correct(Game $game, Game $gamepersist) : Game 
     {
         $game = $this->hydrate($game, $gamepersist);
@@ -21,12 +29,21 @@ class GameCorrector
             }
         }
 
-            $game->setScore($score);
+        $game->setScore($score);
 
-            return $game;
+        $this->flush($game);
+
+        return $game;
     }
 
-    public function hydrate(Game $game, Game $gamePersist)
+    private function flush(Game $game): void
+    {
+        $this->em->persist($game);
+        $this->em->flush();
+
+    }
+
+    private function hydrate(Game $game, Game $gamePersist)
     {
         for($i=1; $i<=10; $i++) { 
 
