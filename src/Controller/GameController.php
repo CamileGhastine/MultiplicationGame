@@ -57,9 +57,13 @@ class GameController extends AbstractController
     #[Route('/result', name: 'result')]
     public function result(UserRepository $userRepository, GameRepository $gameRepository): Response
     {
+        $userGames = $this->getUser() 
+            ? $gameRepository->findBy(['user' => $this->getUser()->getId()], ['score' => 'asc'], 10)
+            : null;
+
         return $this->render('game/result.html.twig', [
             'games' => $gameRepository->findBy([], ['score' => 'asc'], 10),
-            'userGames' => $gameRepository->findBy(['user' => $this->getUser()->getId()], ['score' => 'asc'], 10),
+            'userGames' => $userGames,
         ]);
     }
 }

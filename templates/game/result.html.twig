@@ -4,31 +4,39 @@
 {% endblock %}
 
 {% block body %}
-	<h1 class="text-center">Résultat</h1>
+	<h1 class="mb-5 text-center">Résultats</h1>
 	<div class="row  text-center">
-		<div class="col-3">
+		<div class="col-4">
 			<h2>Vos résulats</h2>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th></th>
-						<th scope="col">Vos scores</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for game in userGames %}
-						<tr class="{{ loop.index is odd ? 'table-info' : 'table-default' }}">
-							<th scope="row">{{ loop.index }}</th>
-							<td>{{ game.score }}</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</tbody>
-		</table>
 
+			{% if userGames %}
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th></th>
+							<th scope="col">Vos scores</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						{% for game in userGames %}
+							<tr class="{{ loop.index is odd ? 'table-info' : 'table-default' }}">
+								<th scope="row">{{ loop.index }}</th>
+								<td>{{ game.score }}</td>
+							</tr>
+						{% endfor %}
+
+					</tbody>
+				</tbody>
+			</table>
+		{% else %}
+			<p>Pour afficher vos résultats
+				<a href="{{ path('app_login')}}">Connectez-vous</a>
+			</p>
+		{% endif %}
 
 	</div>
-	<div class="offset-3 col-3">
+	<div class="offset-4 col-4">
 		<h2>Tableau des leaders</h2>
 		<table class="table table-hover">
 			<thead>
