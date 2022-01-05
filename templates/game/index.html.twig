@@ -6,7 +6,10 @@
 {% block body %}
 	<h1>Règles du jeu Multiplication Game</h1>
 	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ullam possimus temporibus modi nam animi quis voluptas repellendus eveniet. Minus soluta totam laboriosam officiis quae veniam repellat explicabo ducimus perferendis distinctio autem quibusdam molestiae, dicta illum, asperiores molestias quaerat possimus voluptatem consequuntur! Impedit neque ea iure, similique eligendi delectus obcaecati blanditiis aperiam odio quam dignissimos cum assumenda beatae, vero repudiandae quos enim magnam dolore culpa incidunt quo hic asperiores quaerat. Assumenda distinctio saepe nihil consequuntur consequatur pariatur autem corrupti sed adipisci deleniti magni a molestiae, accusamus earum quaerat recusandae non facilis possimus facere. A, fuga nemo. Ipsum expedita a sunt accusantium quam, reiciendis consectetur minima non at voluptates pariatur consequuntur aspernatur porro sit quo voluptas ex nulla, nihil possimus culpa! Explicabo consequatur ipsam corrupti voluptatibus, ducimus vero error qui distinctio odio incidunt quam ea, quisquam magnam dolorum cumque ad laudantium quibusdam excepturi ullam enim deserunt debitis, quo rerum. Optio vel dolor dolore nam ipsum vero repellat blanditiis rerum sequi? Aperiam deleniti aspernatur omnis ea dignissimos nam sapiente, quam delectus illo vero labore est, necessitatibus facere. Temporibus non quam tempora enim eaque quidem eveniet optio nobis, tempore iure ipsum rerum laudantium quaerat error sed voluptate, rem necessitatibus, accusamus architecto odio! Minus!</p>
-    <p>A vous de jouer</p>
-	<a href="{{ path('game') }}" role="button" class="btn btn-lg btn-primary"">Démarrer</a>
-
+	<p>A vous de jouer</p>
+	<p>Choisissez votre niveau pour démarer :
+		<a href="{{ path('game', {'level': '1'}) }}" role="button" class="btn btn-lg btn-primary">1</a>
+		<a href="{{ path('game', {'level': '2'}) }}" role="button" class="btn btn-lg btn-primary">2</a>
+		<a href="{{ path('game', {'level': '3'}) }}" role="button" class="btn btn-lg btn-primary">3</a>
+	</p>
 {% endblock %}
