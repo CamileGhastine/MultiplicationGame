@@ -15,42 +15,52 @@ class GameType extends AbstractType
         $builder
             ->add('answer1', NumberType::class, [
                 'label' => false,
+                'required' =>false,
                 'attr' => ['type' => 'number'],
             ])
             ->add('answer2', NumberType::class, [
                 'label' => false,
+                'required' =>false,
                 'attr' => ['type' => 'number'],
             ])
             ->add('answer3', NumberType::class, [
                 'label' => false,
+                'required' =>false,
                 'attr' => ['type' => 'number'],
             ])
             ->add('answer4', NumberType::class, [
                 'label' => false,
+                'required' =>false,
                 'attr' => ['type' => 'number'],
             ])
             ->add('answer5', NumberType::class, [
                 'label' => false,
+                'required' =>false,
                 'attr' => ['type' => 'number'],
             ])
             ->add('answer6', NumberType::class, [
                 'label' => false,
+                'required' =>false,
                 'attr' => ['type' => 'number'],
             ])
             ->add('answer7', NumberType::class, [
                 'label' => false,
+                'required' =>false,
                 'attr' => ['type' => 'number'],
             ])
             ->add('answer8', NumberType::class, [
                 'label' => false,
+                'required' =>false,
                 'attr' => ['type' => 'number'],
             ])
             ->add('answer9', NumberType::class, [
                 'label' => false,
+                'required' =>false,
                 'attr' => ['type' => 'number'],
             ])
             ->add('answer10', NumberType::class, [
                 'label' => false,
+                'required' =>false,
                 'attr' => ['type' => 'number'],
             ])
         ;

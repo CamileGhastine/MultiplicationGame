@@ -46,40 +46,40 @@ class Game
     #[ORM\Column(type: 'float')]
     private $score;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $answer1;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $answer2;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $answer3;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $answer4;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $answer5;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $answer6;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $answer7;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $answer8;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $answer9;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $answer10;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'integer')]
     private $timeStart;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'integer')]
     private $timeEnd;
 
     public function getId(): ?int
@@ -310,7 +310,7 @@ class Game
 
     public function setAnswer8(int $answer8): self
     {
-        $this->anwser8 = $answer8;
+        $this->answer8 = $answer8;
 
         return $this;
     }
@@ -339,24 +339,24 @@ class Game
         return $this;
     }
 
-    public function getTimeStart(): ?\DateTimeInterface
+    public function getTimeStart(): ?int
     {
         return $this->timeStart;
     }
 
-    public function setTimeStart(\DateTimeInterface $timeStart): self
+    public function setTimeStart(int $timeStart): self
     {
         $this->timeStart = $timeStart;
 
         return $this;
     }
 
-    public function getTimeEnd(): ?\DateTimeInterface
+    public function getTimeEnd(): ?int
     {
         return $this->timeEnd;
     }
 
-    public function setTimeEnd(\DateTimeInterface $timeEnd): self
+    public function setTimeEnd(int $timeEnd): self
     {
         $this->timeEnd = $timeEnd;
 
