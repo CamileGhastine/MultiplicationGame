@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 
 Use App\Entity\Game;
@@ -14,9 +15,10 @@ class GameCorrector
     {
         $this->em = $em;
     }
-    public function correct(Game $game, Game $gamepersist) : Game 
+
+    public function correct(Game $game, Game $gamepersist, User $user) : Game 
     {
-        $game = $this->hydrate($game, $gamepersist);
+        $game = $this->hydrate($game, $gamepersist, $user);
 
         $score = $game->getTimeEnd() - $game->getTimeStart();
 
@@ -36,14 +38,7 @@ class GameCorrector
         return $game;
     }
 
-    private function flush(Game $game): void
-    {
-        $this->em->persist($game);
-        $this->em->flush();
-
-    }
-
-    private function hydrate(Game $game, Game $gamePersist)
+    private function hydrate(Game $game, Game $gamePersist, User $user)
     {
         for($i=1; $i<=10; $i++) { 
 
@@ -53,7 +48,15 @@ class GameCorrector
             $game->$setQuestion($gamePersist->$getQuestion());
         }
         $game->setTimeStart($gamePersist->getTimeStart());
+        $game->setUser($user);
 
         return $game;       
+    }
+
+    private function flush(Game $game): void
+    {
+        $this->em->persist($game);
+        
+        $this->em->flush();
     }
 }

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mulitplication Game
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center">Résultat</h1>
+	<div class="row  text-center">
+		<div class="col-3">
+			<h2>Vos résulats</h2>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<th scope="col">Vos scores</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for game in userGames %}
+						<tr class="{{ loop.index is odd ? 'table-info' : 'table-default' }}">
+							<th scope="row">{{ loop.index }}</th>
+							<td>{{ game.score }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</tbody>
+		</table>
+
+
+	</div>
+	<div class="offset-3 col-3">
+		<h2>Tableau des leaders</h2>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th></th>
+					<th>pseudo</th>
+					<th scope="col">Vos scores</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for game in games %}
+					<tr class="{{ loop.index is odd ? 'table-info' : 'table-default' }}">
+						<th scope="row">{{ loop.index }}</th>
+						<td>{{ game.user.pseudo }}</td>
+						<td>{{ game.score }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</tbody>
+	</table>
+</div></div><a href="{{ path('game') }}" role="button" class="btn btn-lg btn-primary" ">Rejouer</a>{% endblock %}

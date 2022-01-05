@@ -82,6 +82,10 @@ class Game
     #[ORM\Column(type: 'integer')]
     private $timeEnd;
 
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'games')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -359,6 +363,18 @@ class Game
     public function setTimeEnd(int $timeEnd): self
     {
         $this->timeEnd = $timeEnd;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
