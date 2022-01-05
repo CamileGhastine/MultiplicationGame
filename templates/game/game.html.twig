@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mulitplication Game
+{% endblock %}
+
+{% block body %}
+	<h1>Multiplication game</h1>
+
+	{{ form_start(form) }}
+	<div class="row">
+		<div class="col-12">
+			{{ 'test' }}
+			{{ form_widget(form.answer1) }}
+		</div>
+		<div class="col-12">
+			{{ form_widget(form.answer2) }}
+		</div>
+		<div class="col-12">
+			{{ form_widget(form.answer3) }}
+		</div>
+		<div class="col-12">
+			{{ form_widget(form.answer4) }}
+		</div>
+		<div class="col-12">
+			{{ form_widget(form.answer5) }}
+		</div>
+		<div class="col-12">
+			{{ form_widget(form.answer6) }}
+		</div>
+		<div class="col-12">
+			{{ form_widget(form.answer7) }}
+		</div>
+		<div class="col-12">
+			{{ form_widget(form.answer8) }}
+		</div>
+		<div class="col-12">
+			{{ form_widget(form.answer9) }}
+		</div>
+		<div class="col-12">
+			{{ form_widget(form.answer10) }}
+		</div>
+	</div>
+
+	{{ form_rest(form) }}
+	<button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>
+	{{ form_end(form) }}
+
+{% endblock %}
