@@ -17,7 +17,11 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
-	<div class="container my-5"> {% block body %}{% endblock %}
-		</div>
-	</html>
+	<body>
+		{% include 'shared/_header.html.twig' %}
+		{% include 'shared/_menu.html.twig' %}
+		<div class="container my-5"> {% block body %}{% endblock %}
+			</div>
+		</body>
 
+	</html>

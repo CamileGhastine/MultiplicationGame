@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mulitplication Game
+{% endblock %}
+
+{% block body %}
+	<h1>Multiplication game</h1>
+
+	{{ form_start(form) }}
+	<div class="row">
+		<div class="col-12">
+			{{ game.question1[0] ~'x'~ game.question1[1] }}
+			{{ form_widget(form.answer1) }}
+		</div>
+		<div class="col-12">
+			{{ game.question2[0] ~'x'~ game.question2[1] }}
+			{{ form_widget(form.answer2) }}
+		</div>
+		<div class="col-12">
+			{{ game.question3[0] ~'x'~ game.question3[1] }}
+			{{ form_widget(form.answer3) }}
+		</div>
+		<div class="col-12">
+			{{ game.question4[0] ~'x'~ game.question4[1] }}
+			{{ form_widget(form.answer4) }}
+		</div>
+		<div class="col-12">
+			{{ game.question5[0] ~'x'~ game.question5[1] }}
+			{{ form_widget(form.answer5) }}
+		</div>
+		<div class="col-12">
+			{{ game.question6[0] ~'x'~ game.question6[1] }}
+			{{ form_widget(form.answer6) }}
+		</div>
+		<div class="col-12">
+			{{ game.question7[0] ~'x'~ game.question7[1] }}
+			{{ form_widget(form.answer7) }}
+		</div>
+		<div class="col-12">
+			{{ game.question8[0] ~'x'~ game.question8[1] }}
+			{{ form_widget(form.answer8) }}
+		</div>
+		<div class="col-12">
+			{{ game.question9[0] ~'x'~ game.question9[1] }}
+			{{ form_widget(form.answer9) }}
+		</div>
+		<div class="col-12">
+			{{ game.question10[0] ~'x'~ game.question10[1] }}
+			{{ form_widget(form.answer10) }}
+		</div>
+	</div>
+
+	{{ form_rest(form) }}
+	<button type="submit" class="btn btn-lg btn-primary">Enregistrer</button>
+	{{ form_end(form) }}
+
+{% endblock %}
