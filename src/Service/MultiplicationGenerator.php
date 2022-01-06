@@ -26,10 +26,14 @@ class MultiplicationGenerator
          */
         $number1 = 10;
         $number2 = 10;
-        if ($level >= 2) $number1 = 100;
-        if ($level === 3) $number2 = 100;
+        if ($level >= 2) {
+            $number1 = 100;
+        }
+        if ($level === 3) {
+            $number2 = 100;
+        }
 
-        $game = new Game;
+        $game = new Game();
 
         for ($i = 1; $i <= 10; $i++) {
             $setQuestion = 'setQuestion' . $i;
@@ -38,6 +42,4 @@ class MultiplicationGenerator
 
         return $game;
     }
-
-
 }

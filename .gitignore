@@ -10,4 +10,6 @@
 /composer.lock
 /symfony.lock
 /.idea
+/.php-cs-fixer.cache
+
 ###< symfony/framework-bundle ###
