@@ -5,6 +5,10 @@ namespace App\Entity;
 use App\Repository\GameRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Class Game
+ * @package App\Entity
+ */
 #[ORM\Entity(repositoryClass: GameRepository::class)]
 class Game
 {
@@ -378,5 +382,4 @@ class Game
 
         return $this;
     }
-
 }
