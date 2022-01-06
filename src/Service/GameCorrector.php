@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * This file is a Service of Mulitply Game which correct the answers of the player of the game.
+ */
+
 namespace App\Service;
 
 use App\Entity\User;
@@ -8,7 +12,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Game;
 
 /**
- * Class GameCorrector
+ * # Class GameCorrector
+ *  
+ * @author Camile Ghastine <camile@camile.com>
+ * @author Nicolas Zanforlini <nicolas@nicolas.com>
+ * 
  * @package App\Service
  */
 class GameCorrector
@@ -21,8 +29,13 @@ class GameCorrector
     }
 
     /**
-     * Compare the answers to the expected result and add 10 s penality for each wrong answer
+     * Compare the answers to the expected result
+     * * the final score is the time
+     * * the player will have 10 s penality for each wrong answer
+     * * the goal is to have the smallest score
      *
+     * @author Nicolas Zanforlini <nicolas@nicolas.com>
+     * 
      * @param Game $game
      * @param Game $gamepersist
      * @param User $user
@@ -35,7 +48,7 @@ class GameCorrector
 
         $score = $game->getTimeEnd() - $game->getTimeStart();
 
-        for ($i=1; $i<=10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $getQuestion = 'getQuestion' . $i;
             $getAnswer = 'getAnswer' . $i;
 
@@ -54,15 +67,17 @@ class GameCorrector
     /**
      * Hydrate the object $game with tne question that come from $gamePersist and with the answer that come from $game
      *
+     * @author Camile Ghastine <camile@camile.com>
+     * 
      * @param Game $game
      * @param Game $gamePersist
      * @param User $user
      *
      * @return Game
      */
-    private function hydrate(Game $game, Game $gamePersist, User $user)
+    private function hydrate(Game $game, Game $gamePersist, User $user): Game
     {
-        for ($i=1; $i<=10; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $setQuestion = 'setQuestion' . $i;
             $getQuestion = 'getQuestion' . $i;
 
@@ -76,6 +91,8 @@ class GameCorrector
 
     /**
      * Flush $game in the database
+     * 
+     * @author Camile Ghastine <camile@camile.com>
      *
      * @param Game $game
      */
