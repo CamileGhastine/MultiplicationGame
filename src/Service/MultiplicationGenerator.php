@@ -1,17 +1,29 @@
 <?php
 
+/**
+ * This file is a Service of Mulitply Game which generate the questions (mulitplications) for the game.
+ */
+
 namespace App\Service;
 
 use App\Entity\Game;
 
 /**
- * Class MultiplicationGenerator
+ * # Class MultiplicationGenerator
+ * Generate 10 multiplications and stock its in an attribut $question of the object $game.
+ * 
+ * @author Camile Ghastine <camile@camile.com>
+ * 
  * @package App\Service
  */
 class MultiplicationGenerator
 {
     /**
-     * Genrate randomly question as 3x2 or 12x4
+     * Genrate randomly 10 multiplications
+     * 
+     * @example level 1 : 3x2, 5x8, 4x0
+     * @example level 2 : 12x4, 35x2, 58x9 
+     * @example level 3 : 12x41, 53x25, 82x91 
      *
      * @param int $level
      *
