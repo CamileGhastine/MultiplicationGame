@@ -17,7 +17,8 @@ class GameCorrectorTest extends TestCase {
 
     // test instance of game
     public function testInstanceGame() {
-        $this->assertInstanceOf( Game::class, $this->game );
+
+        $this->assertInstanceOf(Game::class, $this->game);
     }
 
     // test instance of gameCorrector
