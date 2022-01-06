@@ -7,6 +7,10 @@ use Doctrine\ORM\EntityManagerInterface;
 
 Use App\Entity\Game;
 
+/**
+ * Class GameCorrector
+ * @package App\Service
+ */
 class GameCorrector 
 {
     private $em;
@@ -16,6 +20,15 @@ class GameCorrector
         $this->em = $em;
     }
 
+    /**
+     * Compare the answers to the expected result and add 10 s penality for each wrong answer
+     *
+     * @param Game $game
+     * @param Game $gamepersist
+     * @param User $user
+     *
+     * @return Game
+     */
     public function correct(Game $game, Game $gamepersist, User $user) : Game 
     {
         $game = $this->hydrate($game, $gamepersist, $user);
@@ -38,6 +51,15 @@ class GameCorrector
         return $game;
     }
 
+    /**
+     * Hydrate the object $game with tne question that come from $gamePersist and with the answer that come from $game
+     *
+     * @param Game $game
+     * @param Game $gamePersist
+     * @param User $user
+     *
+     * @return Game
+     */
     private function hydrate(Game $game, Game $gamePersist, User $user)
     {
         for($i=1; $i<=10; $i++) { 
@@ -53,6 +75,11 @@ class GameCorrector
         return $game;       
     }
 
+    /**
+     * Flush $game in the database
+     *
+     * @param Game $game
+     */
     private function flush(Game $game): void
     {
         $this->em->persist($game);

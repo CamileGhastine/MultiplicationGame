@@ -9,4 +9,5 @@
 /vendor/
 /composer.lock
 /symfony.lock
+/.idea
 ###< symfony/framework-bundle ###

@@ -14,14 +14,35 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+/**
+ * Class GameController
+ * @package App\Controller
+ */
 class GameController extends AbstractController
 {
+    /**
+     * Display homepage
+     *
+     * @return Response
+     */
     #[Route('/', name: 'home')]
     public function index(): Response
     {
         return $this->render('game/index.html.twig');
     }
 
+    /**
+     * Display game page
+     * generate the form and hadle the form to give the final score
+     *
+     * @param GameRepository $repo
+     * @param Request $request
+     * @param RequestStack $requestStack
+     * @param MultiplicationGenerator $multiplicationGenerator
+     * @param GameCorrector $gameCorrector
+     *
+     * @return Response
+     */
     #[Route('/game', name: 'game')]
     public function play(GameRepository $repo, Request $request, RequestStack $requestStack, MultiplicationGenerator $multiplicationGenerator, GameCorrector $gameCorrector): Response
     {
@@ -54,6 +75,15 @@ class GameController extends AbstractController
         ]);
     }
 
+    /**
+     * Display the actual result, all result's user ans the leader bord result
+     *
+     * @param UserRepository $userRepository
+     * @param GameRepository $gameRepository
+     * @param Request $request
+     *
+     * @return Response
+     */
     #[Route('/result', name: 'result')]
     public function result(UserRepository $userRepository, GameRepository $gameRepository, Request $request): Response
     {

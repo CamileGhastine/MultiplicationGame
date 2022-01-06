@@ -11,6 +11,9 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
+ * Class User
+ * @package App\Entity
+ *
  * @UniqueEntity(fields={"pseudo"}, message="There is already an account with this pseudo")
  */
 #[ORM\Entity(repositoryClass: UserRepository::class)]
