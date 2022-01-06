@@ -11,6 +11,9 @@
 /symfony.lock
 /.idea
 /.php-cs-fixer.cache
+/phpDoc
+# /.phpdoc
+
 
 ###< symfony/framework-bundle ###
 
